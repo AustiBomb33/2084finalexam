@@ -151,5 +151,12 @@ namespace COMP2084BeerStore.Controllers
         {
             return _context.Orders.Any(e => e.Id == id);
         }
+
+        [Authorize (Roles ="Administrator")]
+        public async Task<IActionResult> SalesReport()
+        {
+            Order[] orders = await _context.Orders.ToArrayAsync();
+            return View("SalesReport", orders);
+        }
     }
 }

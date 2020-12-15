@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Order>
+@{
+    ViewData["Title"] = "SalesReport";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    int orderCount = 0;
+    double totalCost = 0;
+    //loop through each item to count total orders and cost
+    foreach(var item in Model)
+    {
+        orderCount++;
+        foreach(var product in item.OrderDetails)
+        {
+            totalCost += product.Cost * product.Quantity;
+        }
+    }
+
+}
+
+<h1>Sales Report</h1>
+<table>
+    <tr>
+        <th>Order Count</th>
+        <th>Total Revenue</th>
+    </tr>
+    <tr>
+        <th>@orderCount</th>
+        <th>@totalCost</th>
+    </tr>
+</table>
+
