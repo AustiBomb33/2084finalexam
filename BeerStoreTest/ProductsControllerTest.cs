@@ -75,5 +75,23 @@ namespace BeerStoreTest
             // assert
             CollectionAssert.AreEqual(products.OrderBy(p => p.ProductName).ToList(), model);
         }
+
+        [TestMethod]
+        public void DeleteCorrectView()
+        {
+            var Id = 92;
+            var Result = controller.Delete(Id);
+            var ViewResult = (ViewResult)Result.Result;
+            Assert.AreEqual("Delete", ViewResult.ViewName);
+        }
+
+        [TestMethod]
+        public void DeleteConfirmedSuccess()
+        {
+            var Id = 92;
+            var Result = controller.DeleteConfirmed(Id);
+            var Product = _context.Products.Find(Id);
+            Assert.AreEqual(Product, null);
+        }
     }
 }

@@ -39,8 +39,8 @@
             </td>
             <td class="text-right">
                 @Html.DisplayFor(modelItem => item.Quantity)
-                <form action="Store/UpdateCart" method="post">
-                    <input type="hidden" name="cartId" value="@Model.ToArray()[0].Id" />
+                <form action="/Store/UpdateCart" method="post">
+                    <input type="hidden" name="cartId" value="@item.Id" />
                     <input type="number" name="quantity" value="@item.Quantity" />
                     <button class="btn btn-primary">Update</button>
                 </form>
