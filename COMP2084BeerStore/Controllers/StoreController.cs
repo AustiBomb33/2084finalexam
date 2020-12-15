@@ -251,5 +251,10 @@ namespace COMP2084BeerStore.Controllers
             return RedirectToAction("Details", "Orders", new { @id = order.Id });
         }
 
+        void UpdateCart(int cartId, int quantity)
+        {
+            
+        }
+
     }
 }

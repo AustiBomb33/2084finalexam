@@ -34,11 +34,16 @@
             <td>
                 @if (item.Product.Photo != null)
                 {
-                    <img src="~/img/product-uploads/@item.Product.Photo" alt="Product Image" class="thumb" />
+                <a href="~/img/product-uploads/@item.Product.Photo"><img src="~/img/product-uploads/@item.Product.Photo" alt="Product Image" class="thumb" /></a>
                 }
             </td>
             <td class="text-right">
                 @Html.DisplayFor(modelItem => item.Quantity)
+                <form action="Store/UpdateCart" method="post">
+                    <input type="hidden" name="cartId" value="@Model.ToArray()[0].Id" />
+                    <input type="number" name="quantity" value="@item.Quantity" />
+                    <button class="btn btn-primary">Update</button>
+                </form>
             </td>
             <td class="text-right">
                 @String.Format("{0:c}", item.Price)
